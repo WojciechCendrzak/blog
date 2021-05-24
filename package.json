@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --ext .ts,.tsx",
-    "prettify-all": "prettier --config ./.prettierrc.js -w ./posts -w ./pages"
+    "pretti": "prettier --config ./.prettierrc.js -w ./src"
   },
   "dependencies": {
     "date-fns": "^2.11.1",
