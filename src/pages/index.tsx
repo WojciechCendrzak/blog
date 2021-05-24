@@ -12,7 +12,7 @@ interface HomeProps {
   allPostsData: Post[];
 }
 
-export const Home: React.FC<HomeProps> = ({ allPostsData }) => {
+export const HomePage: React.FC<HomeProps> = ({ allPostsData }) => {
   return (
     <Layout home>
       <Head>
@@ -56,4 +56,4 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   };
 };
 
-export default Home;
+export default HomePage;
