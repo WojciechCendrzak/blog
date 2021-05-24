@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "tsc": "tsc --project tsconfig.json --pretty --noEmit",
-    "lint": "tsc && eslint . --ext .ts,.tsx",
+    "lint": "eslint --ext ts,tsx --fix",
     "pretti": "prettier --config ./.prettierrc.js -w ./src",
     "postinstall": "husky install"
   },
