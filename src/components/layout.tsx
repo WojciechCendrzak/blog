@@ -25,6 +25,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, home }) => {
         />
         <meta name="og:title" content={translate(translationKeys.site.title)} />
         <meta name="twitter:card" content="summary_large_image" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto Mono" />
       </Head>
       <header className={styles.header}>
         {home ? (
