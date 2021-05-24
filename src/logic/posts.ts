@@ -5,7 +5,7 @@ import remark from 'remark';
 import html from 'remark-html';
 import { Post, PostMeta } from '../models/post';
 
-const postsDirectory = path.join(process.cwd(), 'posts');
+const postsDirectory = path.join(process.cwd(), 'src/posts');
 
 export const getSortedPostsData = (): Post[] => {
   // Get file names under /posts

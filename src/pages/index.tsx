@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { Layout, siteTitle } from '../components/layout';
+import { Layout } from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
 import { getSortedPostsData } from '../logic/posts';
 import Link from 'next/link';
@@ -7,6 +7,7 @@ import { Date } from '../components/date';
 import { GetStaticProps } from 'next';
 import React from 'react';
 import { Post } from '../models/post';
+import { translate, translationKeys } from '../logic/translations/translation.service';
 
 interface HomeProps {
   allPostsData: Post[];
@@ -16,14 +17,11 @@ export const HomePage: React.FC<HomeProps> = ({ allPostsData }) => {
   return (
     <Layout home>
       <Head>
-        <title>{siteTitle}</title>
+        <title>{translate(translationKeys.homePage.title)}</title>
       </Head>
       <section className={utilStyles.headingMd}>
-        <p>[Your Self Introduction]</p>
-        <p>
-          (This is a sample website - you’ll be building a site like this in{' '}
-          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
-        </p>
+        <p>{translate(translationKeys.homePage.aboutMe.title)}</p>
+        <p>{translate(translationKeys.homePage.aboutMe.description)}</p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>

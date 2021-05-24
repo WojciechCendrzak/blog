@@ -1,0 +1,12 @@
+{
+  "site": {
+    "title": "Code Calligraphy"
+  },
+  "homePage": {
+    "title": "Home page",
+    "aboutMe": {
+      "title": "About me",
+      "description": "I'am frontend developer"
+    }
+  }
+}
