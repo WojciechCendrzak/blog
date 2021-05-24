@@ -1,11 +1,11 @@
-import { Layout } from "../../components/layout";
-import { getAllPostIds, getPostData } from "../../lib/posts";
-import Head from "next/head";
-import { Date } from "../../components/date";
-import utilStyles from "../../styles/utils.module.css";
-import { GetStaticPaths, GetStaticProps } from "next";
-import React from "react";
-import { Post } from "../../models/post";
+import { Layout } from '../../components/layout';
+import { getAllPostIds, getPostData } from '../../lib/posts';
+import Head from 'next/head';
+import { Date } from '../../components/date';
+import utilStyles from '../../styles/utils.module.css';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import React from 'react';
+import { Post } from '../../models/post';
 
 interface PostPageProps {
   postData: Post;
@@ -24,9 +24,7 @@ const PostPage: React.FC<PostPageProps> = ({ postData }) => {
             <Date date={postData.date} />
           </div>
         )}
-        {postData.contentHtml && (
-          <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
-        )}
+        {postData.contentHtml && <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />}
       </article>
     </Layout>
   );
