@@ -36,6 +36,7 @@ module.exports = {
         'jsx-a11y/anchor-is-valid': 'off',
         '@typescript-eslint/no-unused-vars': ['error'],
         '@typescript-eslint/explicit-module-boundary-types': 'off',
+        '@typescript-eslint/no-explicit-any': 'error',
         'prettier/prettier': ['warn', {}, { usePrettierrc: true }], // Includes .prettierrc.js rules
       },
     },

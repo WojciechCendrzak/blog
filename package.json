@@ -6,8 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . --ext .ts,.tsx",
-    "pretti": "prettier --config ./.prettierrc.js -w ./src"
+    "tsc": "tsc --project tsconfig.json --pretty --noEmit",
+    "lint": "tsc && eslint . --ext .ts,.tsx",
+    "pretti": "prettier --config ./.prettierrc.js -w ./src",
+    "postinstall": "husky install"
   },
   "dependencies": {
     "date-fns": "^2.11.1",
@@ -29,6 +31,7 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^6.0.0",
     "prettier": "^2.3.0",
     "typescript": "^4.2.4"
   }
