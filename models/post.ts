@@ -1,5 +1,9 @@
 export interface PostMeta {
-  id: string;
   title?: string;
   date?: string;
+  contentHtml?: string;
+}
+
+export interface Post extends PostMeta {
+  id: string;
 }

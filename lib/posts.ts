@@ -3,11 +3,11 @@ import path from "path";
 import matter from "gray-matter";
 import remark from "remark";
 import html from "remark-html";
-import { PostMeta } from "../models/post";
+import { Post, PostMeta } from "../models/post";
 
 const postsDirectory = path.join(process.cwd(), "posts");
 
-export function getSortedPostsData(): PostMeta[] {
+export const getSortedPostsData = (): Post[] => {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = fileNames.map((fileName) => {
@@ -22,22 +22,25 @@ export function getSortedPostsData(): PostMeta[] {
     const matterResult = matter(fileContents);
 
     // Combine the data with the id
+    // const resul
     return {
       id,
-      ...matterResult.data,
-    } as PostMeta;
+      ...(matterResult.data as PostMeta),
+    };
   });
   // Sort posts by date
   return allPostsData.sort((a, b) => {
+    if (!a.date || !b.date) return 0;
+
     if (a.date < b.date) {
       return 1;
     } else {
       return -1;
     }
   });
-}
+};
 
-export function getAllPostIds() {
+export const getAllPostIds = () => {
   const fileNames = fs.readdirSync(postsDirectory);
   return fileNames.map((fileName) => {
     return {
@@ -46,7 +49,7 @@ export function getAllPostIds() {
       },
     };
   });
-}
+};
 
 export const getPostData = async (id: string) => {
   const fullPath = path.join(postsDirectory, `${id}.md`);
