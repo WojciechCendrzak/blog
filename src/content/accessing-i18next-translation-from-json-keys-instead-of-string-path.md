@@ -69,7 +69,7 @@ What we want to achieve is something that looks like this:
 i18next.t(keys.homePage.header.buttons.signIn.title);
 ```
 
-What fun is, typescript allows us already to load JSON files into code and take benefits from taking IntelliSense working already there.
+What fun is, the typescript already allows us to load JSON files into the code and enjoy the benefits of IntelliSense already running there.
 
 Now we need a new object named keys with the same structure as our JSON file. But instead of translated values at every leaf, we need to have **that key as a path**. Because i18next.t function still needs that path.
 
