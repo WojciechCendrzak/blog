@@ -1,18 +1,18 @@
 import Head from 'next/head';
-import { Layout } from '../components/layout';
-import { getSortedPostsData } from '../logic/posts';
+import { Layout } from '../../components/layout';
+import { getPostDescriptions } from '../post/post.logic';
 import Link from 'next/link';
-import { Date } from '../components/date';
+import { Date } from '../../components/date';
 import { GetStaticProps } from 'next';
 import React from 'react';
-import { Post } from '../models/post';
-import { translate, translationKeys } from '../logic/translations/translation.service';
+import { PostDescription } from '../post/post.model';
+import { translate, translationKeys } from '../../logic/translations/translation.service';
 
 interface HomeProps {
-  allPostsData: Post[];
+  postDescriptions: PostDescription[];
 }
 
-export const HomePage: React.FC<HomeProps> = ({ allPostsData }) => {
+export const HomePage: React.FC<HomeProps> = ({ postDescriptions }) => {
   return (
     <Layout home>
       <Head>
@@ -25,9 +25,9 @@ export const HomePage: React.FC<HomeProps> = ({ allPostsData }) => {
       <section>
         <h2>Blog</h2>
         <ul>
-          {allPostsData.map(({ id, date, title }) => (
+          {postDescriptions.map(({ id, date, title }) => (
             <li key={id}>
-              <Link href={`/posts/${id}`}>
+              <Link href={`/post/${id}`}>
                 <a>{title}</a>
               </Link>
               <br />
@@ -45,10 +45,10 @@ export const HomePage: React.FC<HomeProps> = ({ allPostsData }) => {
 };
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
-  const allPostsData = getSortedPostsData();
+  const postDescriptions = getPostDescriptions();
   return {
     props: {
-      allPostsData,
+      postDescriptions,
     },
   };
 };

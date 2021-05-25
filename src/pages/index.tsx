@@ -1,5 +1,4 @@
-import { HomePage, getStaticProps } from './home.page';
+import { HomePage, getStaticProps } from '../pages-internal/home/home.page';
 
 export { getStaticProps };
-
 export default HomePage;
