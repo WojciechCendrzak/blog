@@ -1,14 +1,12 @@
 import Head from 'next/head';
 import { Layout } from '../../components/layout';
-import { getPostDescriptions } from '../post/post.logic';
 import Link from 'next/link';
 import { Date } from '../../components/date';
-import { GetStaticProps } from 'next';
 import React from 'react';
 import { PostDescription } from '../post/post.model';
 import { translate, translationKeys } from '../../logic/translations/translation.service';
 
-interface HomeProps {
+export interface HomeProps {
   postDescriptions: PostDescription[];
 }
 
@@ -43,14 +41,3 @@ export const HomePage: React.FC<HomeProps> = ({ postDescriptions }) => {
     </Layout>
   );
 };
-
-export const getStaticProps: GetStaticProps<HomeProps> = async () => {
-  const postDescriptions = getPostDescriptions();
-  return {
-    props: {
-      postDescriptions,
-    },
-  };
-};
-
-export default HomePage;

@@ -63,6 +63,8 @@ i18next.t('homePage.header.buttons.signIn.title');
 
 As you can see, by having the **translation key as a string**, we are losing all benefits described above.
 
+## Solution
+
 What we want to achieve is something that looks like this:
 
 ```ts
@@ -125,6 +127,8 @@ const translationKeys = getTranslationKeys(en);
 
 const value = i18next.t(translationKeys.homePage.header.buttons.signIn.title);
 ```
+
+## End note
 
 Finally, we've reached the goal.
 Now the TypeScript and IDE tools are active when we reference the translation keys. And we can trust our code more.
