@@ -9,6 +9,8 @@ import Image from 'next/image';
 import { markDownComponents } from './post.components';
 import { LinkTo } from '../../components/link';
 import { translate, translationKeys } from '../../logic/translations/translation.service';
+import { Title } from '../../components/title';
+import { Content } from '../../components/content';
 
 interface PostPageProps {
   postData: Post;
@@ -30,9 +32,9 @@ export const PostPage: React.FC<PostPageProps> = ({ postData }) => {
           )}
           {postData.image && <PostImage priority src={postData.image} height={340} width={680} alt={postData.title} />}
         </PostHeader>
-        <PostContent>
+        <Content>
           <ReactMarkdown components={markDownComponents}>{postData.content || ''}</ReactMarkdown>
-        </PostContent>
+        </Content>
         <div>
           <LinkTo href="/">{`← ${translate(translationKeys.common.buttons.backToHome.title)}`}</LinkTo>
         </div>
@@ -40,18 +42,6 @@ export const PostPage: React.FC<PostPageProps> = ({ postData }) => {
     </Layout>
   );
 };
-
-const Title = styled.h1`
-  font-size: 36px;
-  font-weight: 400;
-`;
-
-const PostContent = styled.div`
-  font-weight: 100;
-  line-height: 1.8;
-  letter-spacing: -0.5px;
-  text-align: justify;
-`;
 
 const PostHeader = styled.div`
   display: flex;

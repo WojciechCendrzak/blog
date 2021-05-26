@@ -25,6 +25,10 @@ const FooterContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+
+  @media only screen and (max-width: 768px) {
+    justify-content: center;
+  }
 `;
 
 const FooterItem = styled.div`

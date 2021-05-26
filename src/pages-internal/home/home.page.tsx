@@ -14,12 +14,8 @@ export const HomePage: React.FC<HomeProps> = ({ postDescriptions }) => {
   return (
     <Layout>
       <Head>
-        <title>{translate(translationKeys.homePage.title)}</title>
+        <title>{translate(translationKeys.pages.home.title)}</title>
       </Head>
-      <section>
-        <p>{translate(translationKeys.homePage.aboutMe.title)}</p>
-        <p>{translate(translationKeys.homePage.aboutMe.description)}</p>
-      </section>
       <section>
         <h2>Blog</h2>
         <ul>

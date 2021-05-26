@@ -17,11 +17,17 @@ export const en = {
       },
     },
   },
-  homePage: {
-    title: 'Home page',
+  pages: {
+    home: {
+      title: 'Home page',
+    },
+    articles: {},
     aboutMe: {
       title: 'About me',
-      description: "I'am frontend developer",
+      description: 'Hi, I’m Wojciech, Front End (React) and Back End (.Net) developer.',
+      avatar: {
+        alt: 'Wojciech Cendrzak',
+      },
     },
   },
 };
