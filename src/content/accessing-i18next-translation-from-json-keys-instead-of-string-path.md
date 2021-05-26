@@ -94,14 +94,19 @@ To achieve this, we need to transform the JSON file into another one like this:
 ```ts
 import { reduce } from 'lodash';
 
-const getTranslationKeys = <T>(translations: T, path = ''): T =>
+const getTranslationKeys = <T>(
+  translations: T,
+  path = ''
+): T =>
   reduce(
     translations,
     (accumulator, value, key) => {
       const newPath = `${path}${!!path ? '.' : ''}${key}`;
       return {
         ...accumulator,
-        [key]: isObject(value) ? getTranslationKeys(value, newPath) : newPath,
+        [key]: isObject(value)
+          ? getTranslationKeys(value, newPath)
+          : newPath,
       };
     },
     {}
@@ -127,7 +132,9 @@ i18next.init({
 
 const translationKeys = getTranslationKeys(en);
 
-const value = i18next.t(translationKeys.homePage.header.buttons.signIn.title);
+const value = i18next.t(
+  translationKeys.homePage.header.buttons.signIn.title
+);
 ```
 
 ## End note
