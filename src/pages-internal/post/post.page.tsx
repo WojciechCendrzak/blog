@@ -61,8 +61,5 @@ const PostHeader = styled.div`
 `;
 
 const PostImage = styled(Image)`
-  border-width: 1px;
-  border-color: black;
-  border-style: solid;
   object-fit: cover;
 `;

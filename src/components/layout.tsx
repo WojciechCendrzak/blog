@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { translate, translationKeys } from '../logic/translations/translation.service';
 import styled from 'styled-components';
 import { Menu } from './menu/menu';
+import { Footer } from './footer/footer';
 
 export const Layout: React.FC = ({ children }) => {
   return (
@@ -28,6 +29,7 @@ export const Layout: React.FC = ({ children }) => {
       <Main>
         <main>{children}</main>
       </Main>
+      <Footer />
     </>
   );
 };
