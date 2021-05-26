@@ -27,8 +27,9 @@ const GlobalStyle = createGlobalStyle`
   }
 
   a {
-    color: #0070f3;
+    color: black;
     text-decoration: none;
+    font-weight: 700;
   }
 
   a:hover {

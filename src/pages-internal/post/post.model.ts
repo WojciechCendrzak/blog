@@ -4,6 +4,8 @@ export interface PostId {
 export interface PostMeta {
   title?: string;
   date?: string;
+  author?: string;
+  image?: string;
 }
 
 export interface PostDescription extends PostId, PostMeta {}

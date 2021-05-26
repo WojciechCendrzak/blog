@@ -1,4 +1,4 @@
-import en from './locales/en.json';
+import { en } from './locales/en';
 import i18next, { TFunction } from 'i18next';
 import { getTranslationKeys } from 'i18n-keys';
 

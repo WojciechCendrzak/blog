@@ -12,7 +12,7 @@ export interface HomeProps {
 
 export const HomePage: React.FC<HomeProps> = ({ postDescriptions }) => {
   return (
-    <Layout home>
+    <Layout>
       <Head>
         <title>{translate(translationKeys.homePage.title)}</title>
       </Head>

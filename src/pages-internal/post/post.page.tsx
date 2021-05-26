@@ -7,6 +7,8 @@ import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 import Image from 'next/image';
 import { markDownComponents } from './post.components';
+import { LinkTo } from '../../components/link';
+import { translate, translationKeys } from '../../logic/translations/translation.service';
 
 interface PostPageProps {
   postData: Post;
@@ -26,11 +28,14 @@ export const PostPage: React.FC<PostPageProps> = ({ postData }) => {
               <Date date={postData.date} />
             </div>
           )}
-          <PostImage priority src="/images/translate.png" height={682 / 2} width={680} alt={''} />
+          {postData.image && <PostImage priority src={postData.image} height={340} width={680} alt={postData.title} />}
         </PostHeader>
         <PostContent>
           <ReactMarkdown components={markDownComponents}>{postData.content || ''}</ReactMarkdown>
         </PostContent>
+        <div>
+          <LinkTo href="/">{`← ${translate(translationKeys.common.buttons.backToHome.title)}`}</LinkTo>
+        </div>
       </article>
     </Layout>
   );

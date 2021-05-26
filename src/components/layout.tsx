@@ -1,18 +1,11 @@
 import Head from 'next/head';
-// import Image from 'next/image';
-import Link from 'next/link';
 import { translate, translationKeys } from '../logic/translations/translation.service';
 import styled from 'styled-components';
+import { Menu } from './menu/menu';
 
-const name = '[Your Name]';
-
-interface LayoutProps {
-  home?: boolean;
-}
-
-export const Layout: React.FC<LayoutProps> = ({ children, home }) => {
+export const Layout: React.FC = ({ children }) => {
   return (
-    <Main>
+    <>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta name="description" content="Learn how to build a personal website using Next.js" />
@@ -30,40 +23,17 @@ export const Layout: React.FC<LayoutProps> = ({ children, home }) => {
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap" rel="stylesheet" />
       </Head>
       <header>
-        {home ? (
-          <>
-            {/* <Image priority src="/images/profile.jpg" height={144} width={144} alt={name} /> */}
-            <h1>{name} </h1>
-          </>
-        ) : (
-          <>
-            {/* <Link href="/">
-              <a>
-                <Image priority src="/images/profile.jpg" height={108} width={108} alt={name} />
-              </a>
-            </Link> */}
-            <h2>
-              <Link href="/">
-                <a>{name}</a>
-              </Link>
-            </h2>
-          </>
-        )}
+        <Menu />
       </header>
-      <main>{children}</main>
-      {!home && (
-        <div>
-          <Link href="/">
-            <a>← Back to home</a>
-          </Link>
-        </div>
-      )}
-    </Main>
+      <Main>
+        <main>{children}</main>
+      </Main>
+    </>
   );
 };
 
 const Main = styled.div`
   max-width: 36rem;
   padding: 0 1rem;
-  margin: 3rem auto 6rem;
+  margin: 0 auto 6rem;
 `;
