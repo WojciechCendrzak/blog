@@ -48,6 +48,10 @@ const LinkContainer = styled.div`
 
 const PostImageContainer = styled.div`
   margin-left: 2rem;
+
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const PostImage = styled(Image)`
@@ -71,6 +75,7 @@ const CardFooter = styled.div`
   flex: 1;
   flex-direction: row;
   justify-content: space-between;
+  margin-top: 1rem;
   font-weight: 100;
   font-size: 14px;
 `;

@@ -19,9 +19,9 @@ export const en = {
   },
   pages: {
     home: {
-      title: 'Home',
+      title: 'Last Article',
     },
-    articles: {
+    posts: {
       title: 'Articles',
     },
     aboutMe: {

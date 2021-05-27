@@ -15,11 +15,11 @@ export const ArticlesPage: React.FC<HomeProps> = ({ postDescriptions }) => {
   return (
     <Layout>
       <Head>
-        <title>{translate(translationKeys.pages.articles.title)}</title>
+        <title>{translate(translationKeys.pages.posts.title)}</title>
       </Head>
       <section>
         <PostHeader>
-          <Title>{translate(translationKeys.pages.articles.title)}</Title>
+          <Title>{translate(translationKeys.pages.posts.title)}</Title>
         </PostHeader>
         {postDescriptions.map((post) => (
           <PostCard key={post.id} post={post} />
