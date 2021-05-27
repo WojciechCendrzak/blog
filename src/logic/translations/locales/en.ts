@@ -6,7 +6,7 @@ export const en = {
     title: 'Code Calligraphy',
     routes: {
       [AppRoute.Home]: 'Home',
-      [AppRoute.Articles]: 'Articles',
+      [AppRoute.Posts]: 'Articles',
       [AppRoute.AboutMe]: 'AboutMe',
     },
   },
@@ -19,9 +19,11 @@ export const en = {
   },
   pages: {
     home: {
-      title: 'Home page',
+      title: 'Home',
     },
-    articles: {},
+    articles: {
+      title: 'Articles',
+    },
     aboutMe: {
       title: 'About me',
       description: 'Hi, I’m Wojciech, Front End (React) and Back End (.Net) developer.',

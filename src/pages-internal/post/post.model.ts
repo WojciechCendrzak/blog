@@ -6,6 +6,7 @@ export interface PostMeta {
   date?: string;
   author?: string;
   image?: string;
+  tags?: string;
 }
 
 export interface PostDescription extends PostId, PostMeta {}

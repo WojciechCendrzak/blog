@@ -22,6 +22,7 @@ export const Layout: React.FC = ({ children }) => {
           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap" rel="stylesheet" />
           <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap" rel="stylesheet" />
         </Head>
         <header>
