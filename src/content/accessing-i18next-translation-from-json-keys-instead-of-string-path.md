@@ -4,6 +4,7 @@ date: '2021-05-25'
 author: 'Wojciech Cendrzak'
 image: '/images/translate.png'
 tags: 'i18next,TypeScript'
+isPublished: true
 ---
 
 **TypeScript** is awesome. Like **i18next** too. It works with TypeScript great but has one drawback. We need to provide a translation key as a plain string. It doesn't matter for small apps, but it does indeed for complex one when your translation file start to have hundreds of lines.

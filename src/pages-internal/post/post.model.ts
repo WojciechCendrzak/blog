@@ -7,6 +7,7 @@ export interface PostMeta {
   author?: string;
   image?: string;
   tags?: string;
+  isPublished?: boolean;
 }
 
 export interface PostDescription extends PostId, PostMeta {}

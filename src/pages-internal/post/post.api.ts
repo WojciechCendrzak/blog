@@ -19,15 +19,17 @@ export const getPostDescriptions = (): PostDescription[] => {
     };
   });
 
-  return postsMeta.sort((a, b) => {
-    if (!a.date || !b.date) return 0;
+  return postsMeta
+    .filter((post) => post.isPublished)
+    .sort((a, b) => {
+      if (!a.date || !b.date) return 0;
 
-    if (a.date < b.date) {
-      return 1;
-    } else {
-      return -1;
-    }
-  });
+      if (a.date < b.date) {
+        return 1;
+      } else {
+        return -1;
+      }
+    });
 };
 
 export const getPostIds = () => {
