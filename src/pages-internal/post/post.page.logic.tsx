@@ -1,8 +1,8 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { getPostData, getPostIds } from './post.api';
+import { getPost, getPostIds } from './post.api';
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = getPostIds();
+  const paths = await getPostIds();
   return {
     paths,
     fallback: false,
@@ -12,11 +12,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (!params || !params.id || Array.isArray(params.id)) return { props: {} };
 
-  const postData = await getPostData(params.id);
+  const post = getPost(params.id);
 
   return {
     props: {
-      postData,
+      post,
     },
   };
 };

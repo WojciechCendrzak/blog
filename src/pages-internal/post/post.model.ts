@@ -10,8 +10,7 @@ export interface PostMeta {
   isPublished?: boolean;
 }
 
-export interface PostDescription extends PostId, PostMeta {}
-
-export interface Post extends PostDescription {
+export interface Post extends PostId, PostMeta {
   content?: string;
+  readingTimeInMinutes?: number;
 }

@@ -1,11 +1,11 @@
-import { PostDescription } from '../../post/post.model';
 import Link from 'next/link';
 import { Date } from '../../../components/date';
 import styled from 'styled-components';
 import Image from 'next/image';
+import { Post } from '../../post/post.model';
 
 interface PostCardProps {
-  post: PostDescription;
+  post: Post;
 }
 
 export const PostCard: React.FC<PostCardProps> = ({ post }) => {

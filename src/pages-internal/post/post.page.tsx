@@ -12,28 +12,30 @@ import { translate, translationKeys } from '../../logic/translations/translation
 import { Title } from '../../components/title';
 import { Content } from '../../components/content';
 
-interface PostPageProps {
-  postData: Post;
+export interface PostPageProps {
+  post: Post;
 }
 
-export const PostPage: React.FC<PostPageProps> = ({ postData }) => {
+export const PostPage: React.FC<PostPageProps> = ({ post }) => {
+  console.log('post', post);
   return (
     <Layout>
       <Head>
-        <title>{postData.title}</title>
+        <title>{post.title}</title>
       </Head>
       <article>
         <PostHeader>
-          <Title>{postData.title}</Title>
-          {postData.date && (
+          <Title>{post.title}</Title>
+          {post.date && (
             <div>
-              <Date date={postData.date} />
+              <Date date={post.date} />
             </div>
           )}
-          {postData.image && <PostImage priority src={postData.image} height={340} width={680} alt={postData.title} />}
+          <div>{translate(translationKeys.pages.posts.readintTime, { readingTime: post.readingTimeInMinutes })}</div>
+          {post.image && <PostImage priority src={post.image} height={340} width={680} alt={post.title} />}
         </PostHeader>
         <Content>
-          <ReactMarkdown components={markDownComponents}>{postData.content || ''}</ReactMarkdown>
+          <ReactMarkdown components={markDownComponents}>{post.content || ''}</ReactMarkdown>
         </Content>
         <div>
           <LinkTo href="/">{`← ${translate(translationKeys.common.buttons.backToHome.title)}`}</LinkTo>

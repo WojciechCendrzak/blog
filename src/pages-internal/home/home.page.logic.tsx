@@ -1,12 +1,12 @@
-import { getPostDescriptions } from '../post/post.api';
+import { getPosts } from '../post/post.api';
 import { GetStaticProps } from 'next';
 import { HomeProps } from './home.page';
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
-  const postDescriptions = getPostDescriptions();
+  const post = getPosts();
   return {
     props: {
-      postDescriptions,
+      post,
     },
   };
 };
