@@ -19,25 +19,15 @@ export const getPostDescriptions = (): PostDescription[] => {
     };
   });
 
-  return postsMeta
-    .filter((post) => post.isPublished)
-    .sort((a, b) => {
-      if (!a.date || !b.date) return 0;
-
-      if (a.date < b.date) {
-        return 1;
-      } else {
-        return -1;
-      }
-    });
+  return postsMeta.filter(isPublished).sort(sortByMostRecent);
 };
 
 export const getPostIds = () => {
-  const fileNames = fs.readdirSync(postsDirectory);
-  return fileNames.map((fileName) => {
+  const postDescriptions = getPostDescriptions();
+  return postDescriptions.filter(isPublished).map((postDescription) => {
     return {
       params: {
-        id: fileName.replace(/\.md$/, ''),
+        id: postDescription.id,
       },
     };
   });
@@ -54,3 +44,7 @@ export const getPostData = async (id: string): Promise<Post> => {
     ...(postMatter.data as PostMeta),
   };
 };
+
+const isPublished = (post: PostDescription) => post.isPublished;
+
+const sortByMostRecent = (a: PostDescription, b: PostDescription) => (b.date || '').localeCompare(a.date || '');
