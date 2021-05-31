@@ -32,7 +32,7 @@ export const PostPage: React.FC<PostPageProps> = ({ post }) => {
             </div>
           )}
           <div>{translate(translationKeys.pages.posts.readintTime, { readingTime: post.readingTimeInMinutes })}</div>
-          {post.image && <PostImage priority src={post.image} height={340} width={680} alt={post.title} />}
+          {post.image && <PostImage priority src={post.image} height={400} width={680} alt={post.title} />}
         </PostHeader>
         <Content>
           <ReactMarkdown components={markDownComponents}>{post.content || ''}</ReactMarkdown>

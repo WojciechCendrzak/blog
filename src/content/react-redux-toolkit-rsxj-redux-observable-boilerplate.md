@@ -1,9 +1,9 @@
 ---
-title: 'CRA, ReduxToolkit, RxJs'
+title: 'Boilerplate 2021: RxJs in CRA application'
 date: '2021-06-01'
 author: 'Wojciech Cendrzak'
-image: '/images/translate.png'
-tags: 'swager,TypeScript'
+image: '/images/boilerplate-rx-js.png'
+tags: 'React,TypeScript,RxJs'
 isPublished: false
 ---
 
