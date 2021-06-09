@@ -17,7 +17,6 @@ export interface PostPageProps {
 }
 
 export const PostPage: React.FC<PostPageProps> = ({ post }) => {
-  console.log('post', post);
   return (
     <Layout>
       <Head>
