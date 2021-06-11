@@ -83,7 +83,7 @@ const pong$: RootEpic = (action$) =>
 export const appEpic$ = combineEpics(ping$, pong$);
 ```
 
-## Put it Together
+## Put it together
 
 Create a store
 
