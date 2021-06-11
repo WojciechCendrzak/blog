@@ -7,7 +7,7 @@ tags: 'React,TypeScript,RxJs'
 isPublished: true
 ---
 
-Wanna try **RxJs** in your React application to deal with asynchronous code **effectively**? If yes, then you have come to the right place.
+Wanna try more **RxJs** in your React application to deal with asynchronous code **effectively**? If yes, then you have come to the right place.
 
 In this article, I will try to cover how to bootstrap a lean, robust boilerplate.
 
@@ -51,7 +51,7 @@ Here are a main building block:
 - [RxJs](https://rxjs.dev/) - Reactive Extensions For JavaScript
 - [redux-observable](https://redux-observable.js.org/) - RxJs-based middleware for Redux
 
-These three libraries work extremely well together. We will try to show you below.
+These three libraries work well together. We will try to show it below.
 
 ## Redux Toolkit
 
