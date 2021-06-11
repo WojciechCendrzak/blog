@@ -35,7 +35,7 @@ yarn add @reduxjs/toolkit react-redux rxjs redux-observable@2.0.0-rc.2
 Create a redux Toolkit slice
 
 ```ts
-// ./app/app.slice.ts
+// app.slice.ts
 
 import { createSlice } from '@reduxjs/toolkit';
 
