@@ -2,7 +2,7 @@
 title: 'RxJs, Redux Observable, Redux Toolkit. Part 2 - boilerplate'
 date: '2021-06-11'
 author: 'Wojciech Cendrzak'
-image: '/images/boilerplate-rx-js.png'
+image: '/images/rx-js-boilerplate.png'
 tags: 'React,TypeScript,RxJs'
 isPublished: true
 ---
