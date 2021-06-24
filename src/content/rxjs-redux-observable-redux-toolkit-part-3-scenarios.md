@@ -138,7 +138,8 @@ But compared to **mergeMap**, it unsubscribes from previous subscribed inner obs
 
 Let's take a look into a scenario where we want to fetch data one after the other. But, to make a second fetch, we need data from the previous one.
 
-A real example could be like this: we try to login to the server with its credentials. Once it was done, we gonna take a user id from the response and fetch user details.
+A real example could be like this: we try to log in a user into the server with its credentials.
+After success, we will then take a user id from the response and fetch user details.
 
 Code would be like that:
 
