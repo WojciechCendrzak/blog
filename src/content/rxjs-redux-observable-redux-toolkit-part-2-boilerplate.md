@@ -5,16 +5,14 @@ author: 'Wojciech Cendrzak'
 image: '/images/rx-js-boilerplate.png'
 tags: 'React,TypeScript,RxJs'
 isPublished: true
+includeReferences: rxjs-redux-observable-redux-toolkit-series-section
 ---
 
 Wanna try more **RxJs** in your React application to deal with asynchronous code **effectively**? If yes, then you have come to the right place.
 
 In this article, I will try to cover how to bootstrap a lean, robust boilerplate.
 
-This is one in a series of articles about the RxJs, Redux Observable, Redux Toolkit:
-
-- [Part 1 - setup](/post/rxjs-redux-observable-redux-toolkit-part-1-setup)
-- [Part 2 - boilerplate](/post/rxjs-redux-observable-redux-toolkit-part-2-boilerplate)
+{{rxjs-redux-observable-redux-toolkit-series-section}}
 
 ## For who is this article?
 

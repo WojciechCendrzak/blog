@@ -8,6 +8,7 @@ export interface PostMeta {
   image?: string;
   tags?: string;
   isPublished?: boolean;
+  includeReferences?: string;
 }
 
 export interface Post extends PostId, PostMeta {

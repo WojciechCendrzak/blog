@@ -5,18 +5,14 @@ author: 'Wojciech Cendrzak'
 image: '/images/rx-js-scenarios.png'
 tags: 'React,TypeScript,RxJs'
 isPublished: true
+includeReferences: rxjs-redux-observable-redux-toolkit-series-section
 ---
 
 In this article, we’ll cover typical use cases of RxJs in React application.
 
 We will gonna use a tech stack that we have got familiar with in previous articles: RxJs, Redux Toolkit, Redux-Observable
 
-<!-- TODO -->
-
-Note that this article is part of RxJs Series.
-
-- [Part 1 - setup](/post/rxjs-redux-observable-redux-toolkit-part-1-setup)
-- [Part 2 - boilerplate](/post/rxjs-redux-observable-redux-toolkit-part-2-boilerplate)
+{{rxjs-redux-observable-redux-toolkit-series-section}}
 
 So let's get started.
 

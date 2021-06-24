@@ -5,14 +5,12 @@ author: 'Wojciech Cendrzak'
 image: '/images/rx-js-setup.png'
 tags: 'React,TypeScript,RxJs'
 isPublished: true
+includeReferences: rxjs-redux-observable-redux-toolkit-series-section
 ---
 
 In this article, we will put together a simple React, ping pong application to show the idea of ​​reactivity.
 
-This is the first in a series of articles about the RxJs, Redux Observable, Redux Toolkit:
-
-- [Part 1 - setup](/post/rxjs-redux-observable-redux-toolkit-part-1-setup)
-- [Part 2 - boilerplate](/post/rxjs-redux-observable-redux-toolkit-part-2-boilerplate)
+{{rxjs-redux-observable-redux-toolkit-series-section}}
 
 So let's start:
 

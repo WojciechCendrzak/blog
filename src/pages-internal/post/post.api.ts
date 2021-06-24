@@ -32,14 +32,27 @@ export const getPost = (id: string): Post => {
   const fullPath = path.join(postsDirectory, `${id}.md`);
   const fileContent = fs.readFileSync(fullPath, 'utf8');
   const postMatter = matter(fileContent);
+  const postMeta = postMatter.data as PostMeta;
+  const content = includeReferencesToPost(postMatter.content, postMeta.includeReferences);
 
   return {
     id,
-    content: postMatter.content,
-    readingTimeInMinutes: getRedingTimeInMinutes(postMatter.content),
-    ...(postMatter.data as PostMeta),
+    content: content,
+    readingTimeInMinutes: getRedingTimeInMinutes(content),
+    ...postMeta,
   };
 };
+
+const includeReferencesToPost = (content: string, includeReferences: string | undefined): string => {
+  if (includeReferences) {
+    const referenceContent = getReferenceContent(includeReferences);
+    return content.replace(`{{${includeReferences}}}`, referenceContent);
+  } else {
+    return content;
+  }
+};
+
+const getReferenceContent = (includeReferences: string) => getPost(includeReferences).content || '';
 
 const getRedingTimeInMinutes = (content: string) =>
   Math.round((content.split(' ').length || 0) / WORDS_PER_MINUTE_SPEED);
