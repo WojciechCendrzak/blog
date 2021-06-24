@@ -100,4 +100,40 @@ The last one is **map** again. This time we take a result which is a product and
 
 ## 2. Fetching from API with cancel
 
+This time let's say we have the same product list as before. But now there would be one separate place to show details of the selected product. The user can click on several product cards one after the other. However, we want to see only the last selected.
+
+There is typically no guarantee that API will respond with the same order as was requested.
+It could cause a subtle error. We could see a product that we did not choose last.
+
+To solve this, we will use the **switchMap** operator this time.
+
+Let's look at the code:
+
+```ts
+// app.epic.ts
+
+export const fetchSelectedProduct$: RootEpic = (actions$, _, { api }) =>
+  actions$.pipe(
+    filter(appSlice.actions.fetchSelectedProduct.match),
+    map((action) => action.payload.id),
+    switchMap((id) => from(api.fetchProduct(id))),
+    map((product) => appSlice.actions.setSelectedProduct({ product }))
+  );
+```
+
+Apart from different action names, the only difference with the previous code is that we have used **switchMap** instead of **mergeMap**.
+And we have obtained **cancelation** just like this! Isn't awesome?
+
+But how **switchMap** is working then?
+
+Based on the name of the operator, it will:
+
+- take a **map** function that takes an outer observable action and returns a new inner observable
+- **switch** from the previous inner observable to this new, and propagate all its values to the outer observable.
+
+Speaking more precisely, it creates and subscribes to new internal observable.
+But compared to **mergeMap**, it unsubscribes from previous subscribed inner observable first. So all values emitted by all previous inner observables are just forgotten. Which means, **canceled**.
+
+## 3. Fetching in sequence
+
 Thanks for reading.
