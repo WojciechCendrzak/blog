@@ -22,9 +22,9 @@ RxJs offers a large number of operators or stream creators. However, for a typic
 
 1. Fetching from API
 2. Fetching from API with cancel
-3. Fetching in sequence
-4. Fetching in parallel
-5. Returning more than one value to the emitter
+3. Calling API sequentially
+4. Calling API parallelly
+5. Emitting more than one action from epic
 6. WebSocket listener
 7. Avoid multiply button clicking
 8. Live search optimization
@@ -134,7 +134,7 @@ Based on the name of the operator, it will:
 Speaking more precisely, it creates and subscribes to new internal observable.
 But compared to **mergeMap**, it unsubscribes from previous subscribed inner observable first. So all values emitted by all previous inner observables are just forgotten. Which means, **canceled**.
 
-## 3. Fetching in sequence
+## 3. Calling API sequentially
 
 Let's take a look into a scenario where we want to fetch data one after the other. But, to make a second fetch, we need data from the previous one.
 
@@ -180,7 +180,63 @@ Marvelous.
 
 Ones first one emits result, in this case, data containing user **id**, the second will notice this and play its role. Finally, user details are placed in the store by emitted action **setUser**
 
-## 4. Fetching in parallel
+## 4. Calling API parallelly
+
+Now we will try to call endpoint multiply times parallelly and collect all results at once.
+
+A real example could be like that: upload multiple images to the server parallelly. Once all files have been uploaded put their urls in the store.
+
+Here is the epic code:
+
+```ts
+// app.epic.ts
+
+export const uploadPhotos$: RootEpic = (actions$, _, { api }) =>
+  actions$.pipe(
+    filter(appSlice.actions.uploadPhotos.match),
+    map((action) => action.payload.files),
+    switchMap((files) => forkJoin(files.map((file) => from(api.uploadPhoto(file))))),
+    map((responses) =>
+      appSlice.actions.setPhotos({
+        photoUrls: responses.map((result) => result.url),
+      })
+    )
+  );
+```
+
+And reducer cases:
+
+```ts
+// app.slice.ts
+
+export const appSlice = createSlice({
+  // ...
+  reducers: {
+    uploadPhotos: (_state, _action: PayloadAction<{ files: File[] }>) => {},
+    setPhotos: (state, action: PayloadAction<{ photoUrls: string[] }>) => {
+      state.photoUrls = action.payload.photoUrls;
+    },
+  },
+});
+```
+
+As we can see, we used a **forkJoin**.
+
+_"In parallel computing, the **fork–join model** is a way of setting up and executing parallel programs, such that execution branches off in parallel at designated points in the program, to **join** at a subsequent point and resume sequential execution"_
+
+Let's break down the code line with **forkJoin**:
+
+- first, we call a **map** through files and convert each file to observable.
+- each observable is created by use **from** fed with API call (Promise).
+- each observable is a short-lived stream that can return only one value and complete or throw an error.
+- **forkJoin** is then fed with the observable list.
+- **forkJoin** is waiting till all **observables** completes
+- when all observables complete, emit the last emitted value from each.
+- emitted result is an array of each call response with the same order as the initial files array
+
+Finally, all responses array is mapped to urls array that **setPhotos** action require.
+
+## 5. Emitting more than one action from epic
 
 ... to be continued
 
