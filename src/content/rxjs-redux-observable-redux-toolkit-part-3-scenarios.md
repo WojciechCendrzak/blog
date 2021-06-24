@@ -25,9 +25,9 @@ RxJs offers a large number of operators or stream creators. However, for a typic
 3. Calling API sequentially
 4. Calling API parallelly
 5. Emitting more than one action from epic
-6. WebSocket listener
-7. Avoid multiply button clicking
-8. Live search optimization
+6. WebSocket listening
+7. Avoiding multiply button click
+8. Live search optimizing
 9. Simple error handling
 10. Bit advanced error handling
 
@@ -237,6 +237,80 @@ Let's break down the code line with **forkJoin**:
 Finally, all responses array is mapped to urls array that **setPhotos** action require.
 
 ## 5. Emitting more than one action from epic
+
+Up to now, all our epic emits one action as a result of one action incoming.
+But what if we want to emit more than one action?
+
+A real example could be that:
+
+- user press logout button
+- logout endpoint is called
+- all the user data are removed from the store
+- the user is navigated to the home page
+
+Let's take a look at the solution:
+
+```ts
+// app.epic.ts
+
+export const logout$: RootEpic = (actions$, _, { api }) =>
+  actions$.pipe(
+    filter(appSlice.actions.logout.match),
+    switchMap(() => from(api.logout())),
+    switchMap(() => of(appSlice.actions.reset(), appSlice.actions.navigateHome()))
+  );
+```
+
+Again we used switchMap and fed it with observables of two redux actions created by **of** observable creator.
+
+This time, whenever **logout** action is dispatched, two other actions: **reset** and **navigateHome** are emitted as epic output.
+
+## 6. WebSocket listening
+
+Now let's take a look at another scenario which is a **live chat**.
+We want to show all incoming messages to our app through **WebSocket** and append it to a messages list.
+
+Here is how code could be:
+
+```ts
+// app.epic.ts
+
+export const startListeningFromWebSocket$: RootEpic = (actions$, _, { api }) =>
+  actions$.pipe(
+    filter(appSlice.actions.startListeningFromWebSocket.match),
+    map(() => api.startWebSocketClient()),
+    switchMap((webSocketClient) =>
+      fromEventPattern<MessageEvent<string>>(
+        (handler) => webSocketClient.addEventListener('message', handler),
+        (handler) => webSocketClient.removeEventListener('message', handler)
+      )
+    ),
+    map((event) => event.data),
+    map((message) => appSlice.actions.appendMessage({ message }))
+  );
+
+// app.api.ts
+export const api = {
+  startWebSocketClient: () => new WebSocket(WEB_SOCKET_URL),
+};
+```
+
+Let's break down:
+
+- **startListeningFromWebSocket** action is dispatched and filtered here
+- in **map** line, WebSocket client is created and pass down to the **switchMap**.
+- **fromEventPattern** takes two parameters **addHandler** and **removeHandler**. Those are provided with WebSocket handlers accordingly.
+- ones **fromEventPattern** is triggered, **addEventListener** is called and **fromEventPattern** starts emitting values down to outer observable as they comes from WebSocket client
+- when **switchMap** inner observable is unsubscribed, **removeEventListener** is triggered
+- last two maps gets a message from incoming WebSocket event and emits **appendMessage** action
+
+## 7. Avoiding multiply button click
+
+## 8. Live search optimizing
+
+## 9. Simple error handling
+
+## 10. Bit advanced error handling
 
 ... to be continued
 
