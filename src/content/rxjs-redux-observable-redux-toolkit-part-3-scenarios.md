@@ -306,9 +306,99 @@ Let's break down:
 
 ## 7. Avoiding multiply button click
 
+In lots of cases, we want to prevent **accidental multi-click**.
+
+What's really cool about RxJs we can get this behavior in **one line only**!.
+
+Let's add this line to the code we have before:
+
+```ts
+// app.epics.ts
+
+export const loginThrottle$: RootEpic = (actions$, _, { api }) =>
+  actions$.pipe(
+    filter(appSlice.actions.login.match),
+    throttleTime(250), // <---
+    switchMap((action) => from(api.login(action.payload))),
+    switchMap((response) => from(api.fetchUser(response.id))),
+    map((user) => appSlice.actions.setUser({ user }))
+  );
+```
+
+**throttleTime** emit first value then ignore for a specified duration. In our case, 250 milliseconds.
+
+From now every accidental **multi-click** will become a **single click**.
+
 ## 8. Live search optimizing
 
+Let's imagine input where a user can type a **search phrase**. While typing, results are adjusted **on the fly**. So far, so good. But when we use API endpoint to get results, we will generate a **lot of traffic**.
+
+Here is a solution:
+
+```ts
+// app.epic.ts
+
+export const searchProduct$: RootEpic = (actions$, _, { api }) =>
+  actions$.pipe(
+    filter(appSlice.actions.searchProduct.match),
+    throttleTime(250, asyncScheduler, {
+      leading: true,
+      trailing: true,
+    }),
+    mergeMap((action) => from(api.searchProducts(action.payload.searchPhrase))),
+    map((response) => appSlice.actions.setProducts({ products: response }))
+  );
+```
+
+We used **throttleTime** again but now have some extra parameters: **leading** and **trailing** set to true. It means that:
+
+- for the very first **searchProduct** action, API will be called (leading)
+- after 250 milliseconds from the last **searchProduct** action, API will be called again (trailing). In that case, a **searchPhrase** will be taken from the last action payload.
+- all actions in between will be skipped
+
 ## 9. Simple error handling
+
+What's if an error occurs in our epic.
+Let's say we tied to fetch a product from API, but we failed.
+
+**catchError** operator comes to rescue.
+
+```ts
+// app.epic.ts
+
+export const fetchProductWithSimpleErrorHandler$: RootEpic = (actions$, _, { api }) =>
+  actions$.pipe(
+    filter(appSlice.actions.fetchProduct.match),
+    mergeMap((action) =>
+      from(api.fetchProduct(action.payload.id)).pipe(
+        // Placement 1. this will end only internal observable
+        catchError((error: Error) => {
+          console.log(`Error message: ${error.message}`);
+          return EMPTY;
+        })
+      )
+    ),
+    map((product) => appSlice.actions.setProduct({ product })),
+    // Placement 2. this will end outer observable (epic)
+    catchError((error: Error) => {
+      console.log(`Error message: ${error.message}`);
+      return EMPTY;
+    })
+  );
+```
+
+### Placement in epic
+
+Placement of **catchError** operator in epic is crucial.
+Not matter whether the error was caught or not, it will **end the observable lifecycle** inside which it happened.
+
+The second placement will then disable our epic for handling any further **fetchProduct** action.
+
+So that is why we need to catch potential error inside the inner observable (first placement). When we call **fetchProduct** again, a new observable will be just created and live again.
+
+### Alternative observable
+
+**catchError** operator must return alternative observable that could be anything. For example, actions for navigating to Not Found page, etc. In our case, we return EMPTY observable, which emits nothing, and completes immediately.
 
 ## 10. Bit advanced error handling
 
