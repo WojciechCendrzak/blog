@@ -136,4 +136,6 @@ But compared to **mergeMap**, it unsubscribes from previous subscribed inner obs
 
 ## 3. Fetching in sequence
 
+... to be continued.
+
 Thanks for reading.
