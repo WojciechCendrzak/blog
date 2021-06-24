@@ -136,6 +136,51 @@ But compared to **mergeMap**, it unsubscribes from previous subscribed inner obs
 
 ## 3. Fetching in sequence
 
-... to be continued.
+Let's take a look into a scenario where we want to fetch data one after the other. But, to make a second fetch, we need data from the previous one.
+
+A real example could be like this: we try to login to the server with its credentials. Once it was done, we gonna take a user id from the response and fetch user details.
+
+Code would be like that:
+
+```ts
+// app.epic.ts
+
+export const login$: RootEpic = (actions$, _, { api }) =>
+  actions$.pipe(
+    filter(appSlice.actions.login.match),
+    switchMap((action) => from(api.login(action.payload))),
+    switchMap((response) => from(api.fetchUser(response.id))),
+    map((user) => appSlice.actions.setUser({ user }))
+  );
+```
+
+And our action are defined like this:
+
+```ts
+// app.slice.ts
+
+export const appSlice = createSlice({
+  // ...
+  reducers: {
+    login: (_state, _action: PayloadAction<{ login: string; password: string }>) => {},
+    fetchUser: (_state, _action: PayloadAction<{ id: string }>) => {},
+    setUser: (state, action: PayloadAction<{ user: User }>) => {
+      state.user = action.payload.user;
+    },
+  },
+});
+```
+
+As you can see, we have used **switchMap** twice.
+Does it mean fetching in sequence? Yes.
+Till the first fetching is unfinished, the first **switchMap** will emit nothing. And it causes the second one to wait.
+
+Marvelous.
+
+Ones first one emits result, in this case, data containing user **id**, the second will notice this and play its role. Finally, user details are placed in the store by emitted action **setUser**
+
+## 4. Fetching in parallel
+
+... to be continued
 
 Thanks for reading.
