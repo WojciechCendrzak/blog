@@ -402,6 +402,51 @@ So that is why we need to catch potential error inside the inner observable (fir
 
 ## 10. Bit advanced error handling
 
-... to be continued
+In this scenario, we will create a new operator named **managed** to handle errors.
+Here are assumptions:
+
+- it will take one parameter, which is an operator we want to manage
+- it will handle an error inside this new operator
+
+In that assumptions, we have a couple of benefits:
+
+- have a **central place** of catching errors
+- **delegates** error handling to this new operator
+- have main logic more **readable**.
+- **reuse code**
+
+Here is the code with managed operator:
+
+```ts
+// app.epic.ts
+
+export const fetchProductManaged$: RootEpic = (actions$, _, { api }) =>
+  actions$.pipe(
+    filter(appSlice.actions.fetchProduct.match),
+    managed(mergeMap((action) => from(api.fetchProduct(action.payload.id)))),
+    map((product) => appSlice.actions.setProduct({ product }))
+  );
+```
+
+And here is managed operator code itself:
+
+```ts
+export type Managed = <T, A>(operator: OperatorFunction<T, A>) => OperatorFunction<T, A>;
+
+export const managed: Managed = (operator) =>
+  mergeMap((action) =>
+    of(action).pipe(
+      operator,
+      catchError((error: Error) => {
+        console.log(error);
+        return EMPTY;
+      })
+    )
+  );
+```
+
+As you can see our new operator takes an operator we want to manage.
+Then create an inner observable that could be safely ended when an error occurs.
+Then we composed **managed operator** and **catchError** operators in pipe sequence.
 
 Thanks for reading.
