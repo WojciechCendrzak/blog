@@ -18,7 +18,7 @@ So let's get started.
 
 ## Typical Frontend Scenarios
 
-RxJs offers a large number of operators or stream creators. However, for a typical React application, you will probably need a small set of them. Those operators would be **filter**, **map**, **throttleTime**, **mergeMap**, **switchMap**, **forkJoin** and **catchError**. As for stream creators, we gonna use: **from**, **of** and **fromEventPattern**. We will try to look at them closer to see how they can be useful for common React app needs.
+RxJs offers a large number of operators and stream creators. However, for a typical React application, you will probably need a small set of them. Those operators would be **filter**, **map**, **throttleTime**, **mergeMap**, **switchMap**, **forkJoin** and **catchError**. As for stream creators, we gonna use: **from**, **of** and **fromEventPattern**. We will try to look at them closely to see how they can be useful for common React app needs.
 
 1. Fetching from API
 2. Fetching from API with cancel
