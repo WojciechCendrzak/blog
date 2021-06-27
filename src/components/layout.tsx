@@ -3,8 +3,14 @@ import { translate, translationKeys } from '../logic/translations/translation.se
 import styled from 'styled-components';
 import { Menu } from './menu/menu';
 import { Footer } from './footer/footer';
+import { ReactNode } from 'react';
+import { MIDDLE_COLUMN_SIZE, POST_MARGIN_BOTTOM } from '../const/sizes';
 
-export const Layout: React.FC = ({ children }) => {
+interface LayoutProps {
+  leftSection?: ReactNode;
+  rightSection?: ReactNode;
+}
+export const Layout: React.FC<LayoutProps> = ({ children, leftSection, rightSection }) => {
   return (
     <LayoutContainer>
       <div>
@@ -28,9 +34,11 @@ export const Layout: React.FC = ({ children }) => {
         <header>
           <Menu />
         </header>
-        <main>
+        <MainContainer>
+          <Side>{leftSection}</Side>
           <Main>{children}</Main>
-        </main>
+          <Side>{rightSection}</Side>
+        </MainContainer>
       </div>
       <footer>
         <Footer />
@@ -46,8 +54,25 @@ const LayoutContainer = styled.div`
   display: flex;
 `;
 
+const MainContainer = styled.main`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 2rem;
+
+  @media only screen and (max-width: 768px) {
+    display: inherit;
+  }
+`;
+
 const Main = styled.div`
-  max-width: 36rem;
-  padding: 0 1rem;
-  margin: 0 auto 6rem;
+  max-width: ${MIDDLE_COLUMN_SIZE};
+  padding: 0 1rem ${POST_MARGIN_BOTTOM}px 1rem;
+`;
+
+const Side = styled.div`
+  flex: 1;
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
 `;

@@ -33,7 +33,7 @@ RxJs offers a large number of operators and stream creators. However, for a typi
 
 The complete source code you can see [here](https://github.com/WojciechCendrzak/react-redux-toolkit-rxjs-scenarios)
 
-## 1. fetching from API
+## 1. Fetching from API
 
 To start from, we will go with something simple.
 We will try to fetch some product from API and store it in the redux store.
@@ -236,7 +236,7 @@ Let's break down the code line with **forkJoin**:
 
 Finally, all responses array is mapped to urls array that **setPhotos** action require.
 
-## 5. Emitting more than one action from epic
+## 5. Emitting more than one action
 
 Up to now, all our epic emits one action as a result of one action incoming.
 But what if we want to emit more than one action?

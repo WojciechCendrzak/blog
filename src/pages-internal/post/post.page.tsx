@@ -11,6 +11,7 @@ import { LinkTo } from '../../components/link';
 import { translate, translationKeys } from '../../logic/translations/translation.service';
 import { Title } from '../../components/title';
 import { Content } from '../../components/content';
+import { Outline } from '../../components/outline';
 
 export interface PostPageProps {
   post: Post;
@@ -18,7 +19,7 @@ export interface PostPageProps {
 
 export const PostPage: React.FC<PostPageProps> = ({ post }) => {
   return (
-    <Layout>
+    <Layout leftSection={<Outline />}>
       <Head>
         <title>{post.title}</title>
       </Head>
