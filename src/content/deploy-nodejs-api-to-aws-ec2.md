@@ -14,7 +14,9 @@ In this article, we'll cover how to deploy a simply NodeJs API to AWS EC2. To en
 We will use this sample repository with
 NestJs API.
 
+```sh
 https://github.com/WojciechCendrzak/nestjs-api
+```
 
 You can also create your server app.
 
