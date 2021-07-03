@@ -1,13 +1,15 @@
 ---
-title: 'How to deploy NodeJs API to AWS EC2'
+title: 'Deploy NodeJs API on AWS EC2'
 date: '2021-06-29'
 author: 'Wojciech Cendrzak'
 image: '/images/nodejs-ec2.png'
 tags: 'devops, nodejs, aws'
 isPublished: true
+includeReferences: deploy-nodejs-api-series-section
 ---
 
-In this article, we'll cover how to deploy a simply NodeJs API to AWS EC2. To ensure everything works fine, we will try to access it from the browser.
+In this article, we'll cover how to deploy a simply NodeJs API on AWS EC2. To ensure everything works fine, we will try to access it from the browser.
+{{deploy-nodejs-api-series-section}}
 
 ## NodeJS server
 
