@@ -58,7 +58,7 @@ More than sure that if you try once, you will not want to come back.
 It is [officialy recomemed](https://redux.js.org/), immutable by design, and uses redux behind anyway.
 Combined with React hooks, it is a part that will significantly decrease a boilerplate.
 
-#### Slice
+### Slice
 
 The easiest way to create redux actions is through Slice.
 
@@ -127,7 +127,7 @@ There are a couple of things it does:
 - feed Epic with redux action stream and take action stream
 - subscribe to all Epics,
 
-#### Epic
+### Epic
 
 As the documentation says:
 
@@ -171,7 +171,7 @@ The first operator in epic always takes a redux action. The last must return red
 
 Then we have a couple of operators:
 
-#### filter operator
+### filter operator
 
 When action is dispatched, all epis are called.
 
@@ -181,14 +181,14 @@ Redux Toolkit provides a **match** function for all actions. Moreover, it implem
 
 Isn't it awesome?
 
-#### throttleTime operator
+### throttleTime operator
 
 We want to trigger a search as we type a search phrase. However, it will produce too many API calls.
 This **one-liner** will skip all but one action every 250 milliseconds.
 
 What a great declarative approach!
 
-#### map operator
+### map operator
 
 It's pretty straightforward.
 We take a search phrase from the selector **getSearchPhrase**.
@@ -199,7 +199,7 @@ Here is how it is defined:
 export const getSearchPhrase = (store: StoreState) => store.book.searchPhrase || '';
 ```
 
-#### switchMap operator
+### switchMap operator
 
 Here is the part that calls API.
 
@@ -208,7 +208,7 @@ On success, it will emit a response data of API call to that stream.
 
 What switchMap does is to take that stream and flatten it into an upper stream.
 
-#### map operator again
+### map operator again
 
 Finally, the last map will take a response object and return an action (as required by Epic) to set books in the reducer.
 

@@ -5,4 +5,9 @@ export const Content = styled.div`
   line-height: 1.8;
   letter-spacing: -0.5px;
   text-align: justify;
+
+  img {
+    width: 100%;
+    border-radius: 8px;
+  }
 `;

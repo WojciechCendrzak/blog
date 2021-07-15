@@ -59,7 +59,7 @@ export const Outline: React.FC = () => {
       <OutlineContainer>
         <OutlineItems>
           {items?.map((item, index) => (
-            <OutlineItem key={index} onClick={handleOnItemClick(item.offsetTop)}>
+            <OutlineItem key={index} onClick={handleOnItemClick(item.offsetTop)} level={item.level}>
               {item.isReached ? <strong>{item.title}</strong> : item.title}
             </OutlineItem>
           ))}
@@ -91,7 +91,8 @@ const OutlineItems = styled.div`
   font-weight: 100;
 `;
 
-const OutlineItem = styled.div`
+const OutlineItem = styled.div<{ level: number }>`
   margin-bottom: 5px;
+  margin-left: ${({ level }) => (level - 2) * 22}px;
   cursor: pointer;
 `;

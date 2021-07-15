@@ -5,8 +5,10 @@ import React from 'react';
 import { Post } from './post.model';
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
+import gfm from 'remark-gfm';
 import Image from 'next/image';
 import { markDownComponents } from './post.components';
+import rehypeRaw from 'rehype-raw';
 import { LinkTo } from '../../components/link';
 import { translate, translationKeys } from '../../logic/translations/translation.service';
 import { Title } from '../../components/title';
@@ -35,11 +37,18 @@ export const PostPage: React.FC<PostPageProps> = ({ post }) => {
           {post.image && <PostImage priority src={post.image} height={400} width={680} alt={post.title} />}
         </PostHeader>
         <Content>
-          <ReactMarkdown components={markDownComponents}>{post.content || ''}</ReactMarkdown>
+          <ReactMarkdown
+            remarkPlugins={[gfm]}
+            skipHtml={false}
+            rehypePlugins={[rehypeRaw]}
+            components={markDownComponents}
+          >
+            {post.content || ''}
+          </ReactMarkdown>
         </Content>
-        <div>
+        <BackButton>
           <LinkTo href="/">{`← ${translate(translationKeys.common.buttons.backToHome.title)}`}</LinkTo>
-        </div>
+        </BackButton>
       </article>
     </Layout>
   );
@@ -54,4 +63,8 @@ const PostHeader = styled.div`
 
 const PostImage = styled(Image)`
   object-fit: cover;
+`;
+
+const BackButton = styled.div`
+  margin-top: 5rem;
 `;

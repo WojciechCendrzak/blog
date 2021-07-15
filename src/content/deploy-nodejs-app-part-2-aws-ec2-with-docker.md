@@ -1,16 +1,16 @@
 ---
-title: 'Deploy NodeJs API on AWS EC2 with docker'
+title: 'Deploy NodeJs app - Part 2 - AWS EC2 with docker'
 date: '2021-07-03'
 author: 'Wojciech Cendrzak'
 image: '/images/nodejs-ec2-docker.png'
 tags: 'devops, nodejs, aws, docker'
 isPublished: true
-includeReferences: deploy-nodejs-api-series-section
+includeReferences: deploy-nodejs-app-series-section
 ---
 
 In this, we'll cover how to **dockerized** NodeJs application. Finally, we will deploy it on AWS EC2.
 
-{{deploy-nodejs-api-series-section}}
+{{deploy-nodejs-app-series-section}}
 
 ## What Docker is
 
@@ -249,7 +249,7 @@ Hello World!
 
 ## Other Docker commands
 
-#### List containers
+### List containers
 
 ```bash
 $ docker ps
@@ -258,22 +258,22 @@ CONTAINER ID   IMAGE               COMMAND                  CREATED         STAT
 542cd674ae6b   nestjs-api          "docker-entrypoint.s…"   4 minutes ago   Up 4 minutes   0.0.0.0:3000->3000/tcp, :::3000->3000/tcp   suspicious_goldwasser
 ```
 
-#### Prints a logs
+### Prints a logs
 
 ```bash
 $ docker logs <container id>
 ```
 
-#### Stop the container
+### Stop the container
 
 ```bash
 $ docker stop <container id>
 ```
 
-#### Go inside running container
+### Go inside running container
 
 ```bash
-$ docker exec -it <container id> /bin/bash
+$ docker exec -it <container id> /bin/sh
 ```
 
 ## Deploying on AWS EC2
