@@ -34,7 +34,11 @@ export const PostPage: React.FC<PostPageProps> = ({ post }) => {
             </div>
           )}
           <div>{translate(translationKeys.pages.posts.readintTime, { readingTime: post.readingTimeInMinutes })}</div>
-          {post.image && <PostImage priority src={post.image} height={400} width={680} alt={post.title} />}
+          {post.image && (
+            <PostImageContainer>
+              <PostImage priority src={post.image} height={400} width={680} alt={post.title} />
+            </PostImageContainer>
+          )}
         </PostHeader>
         <Content>
           <ReactMarkdown
@@ -59,6 +63,10 @@ const PostHeader = styled.div`
   flex-direction: column;
   flex: 1;
   text-align: center;
+`;
+
+const PostImageContainer = styled.div`
+  padding-top: 1rem;
 `;
 
 const PostImage = styled(Image)`
