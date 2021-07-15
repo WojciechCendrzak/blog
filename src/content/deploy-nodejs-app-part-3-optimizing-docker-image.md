@@ -256,7 +256,7 @@ _A tool for exploring a docker image, layer contents, and discovering ways to sh
 
 Install Dive.
 
-```
+```bash
 brew install dive
 ```
 

@@ -49,7 +49,7 @@ export const Outline: React.FC = () => {
 
   const handleOnItemClick = useCallback(
     (y: number) => () => {
-      window.scrollTo(0, y);
+      window.scrollTo({ top: y, behavior: 'smooth' });
     },
     []
   );
@@ -59,8 +59,13 @@ export const Outline: React.FC = () => {
       <OutlineContainer>
         <OutlineItems>
           {items?.map((item, index) => (
-            <OutlineItem key={index} onClick={handleOnItemClick(item.offsetTop)} level={item.level}>
-              {item.isReached ? <strong>{item.title}</strong> : item.title}
+            <OutlineItem
+              key={index}
+              onClick={handleOnItemClick(item.offsetTop)}
+              level={item.level}
+              selected={item.isReached}
+            >
+              {item.title}
             </OutlineItem>
           ))}
         </OutlineItems>
@@ -88,11 +93,24 @@ const OutlineContainer = styled.div`
 
 const OutlineItems = styled.div`
   font-size: 12px;
-  font-weight: 100;
 `;
 
-const OutlineItem = styled.div<{ level: number }>`
-  margin-bottom: 5px;
+const MENU_ITEM_HOVER_ANIMATED_PADDING = 10;
+
+const OutlineItem = styled.div<{ level: number; selected: boolean }>`
   margin-left: ${({ level }) => (level - 2) * 22}px;
+  padding-top: 3px;
+  padding-bottom: 3px;
   cursor: pointer;
+
+  padding-left: 0;
+  padding-right: ${MENU_ITEM_HOVER_ANIMATED_PADDING}px;
+  font-weight: ${({ selected }) => (selected ? 900 : 100)};
+  transition: padding-left 0.5s, padding-right 0.5s, font-weight 0.5s;
+
+  :hover {
+    padding-left: ${MENU_ITEM_HOVER_ANIMATED_PADDING}px;
+    padding-right: 0;
+    font-weight: 900;
+  }
 `;
