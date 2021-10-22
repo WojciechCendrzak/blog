@@ -2,7 +2,6 @@ import { Layout } from '../../components/layout';
 import Head from 'next/head';
 import { Date } from '../../components/date';
 import React from 'react';
-import { Post } from './post.model';
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
@@ -14,13 +13,10 @@ import { translate, translationKeys } from '../../logic/translations/translation
 import { Title } from '../../components/title';
 import { Content } from '../../components/content';
 import { Outline } from '../../components/outline';
-
-export interface PostPageProps {
-  post: Post;
-}
+import { PostPageProps } from './post.page.logic';
 
 export const PostPage: React.FC<PostPageProps> = ({ post }) => {
-  return (
+  return post ? (
     <Layout leftSection={<Outline />}>
       <Head>
         <title>{post.title}</title>
@@ -55,7 +51,7 @@ export const PostPage: React.FC<PostPageProps> = ({ post }) => {
         </BackButton>
       </article>
     </Layout>
-  );
+  ) : null;
 };
 
 const PostHeader = styled.div`

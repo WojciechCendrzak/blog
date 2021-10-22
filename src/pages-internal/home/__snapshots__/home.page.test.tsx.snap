@@ -2,15 +2,15 @@
 
 exports[`HomePage should match the snapshot 1`] = `
 <div
-  className="layout__LayoutContainer-ccgz52-0 iBptwS"
+  className="layout__LayoutContainer-sc-ccgz52-0 fcGbFo"
 >
   <div>
     <header>
       <div
-        className="menu__MenuContainer-sc-1jeiv2e-0 bQHOlj"
+        className="menu__MenuContainer-sc-1jeiv2e-0 iiPuwU"
       >
         <div
-          className="menu__MenuItem-sc-1jeiv2e-1 iWFitx"
+          className="menu__MenuItem-sc-1jeiv2e-1 jrGPUO"
         >
           <a
             href="/"
@@ -21,7 +21,7 @@ exports[`HomePage should match the snapshot 1`] = `
           </a>
         </div>
         <div
-          className="menu__MenuItem-sc-1jeiv2e-1 iWFitx"
+          className="menu__MenuItem-sc-1jeiv2e-1 jrGPUO"
         >
           <a
             href="/posts"
@@ -32,7 +32,7 @@ exports[`HomePage should match the snapshot 1`] = `
           </a>
         </div>
         <div
-          className="menu__MenuItem-sc-1jeiv2e-1 iWFitx"
+          className="menu__MenuItem-sc-1jeiv2e-1 jrGPUO"
         >
           <a
             href="/about-me"
@@ -44,30 +44,38 @@ exports[`HomePage should match the snapshot 1`] = `
         </div>
       </div>
     </header>
-    <main>
+    <main
+      className="layout__MainContainer-sc-ccgz52-1 inmpeB"
+    >
       <div
-        className="layout__Main-ccgz52-1 jMDwPR"
+        className="layout__Side-sc-ccgz52-3 fzUecF"
+      />
+      <div
+        className="layout__Main-sc-ccgz52-2 jWPXKy"
       >
         <section>
           <div
-            className="homepage__HomeHeader-b3ui7m-0 kDeYFZ"
+            className="homepage__HomeHeader-sc-b3ui7m-0 iWQKZL"
           >
             <h1
-              className="title__Title-sc-155hqgb-0 gUxpZt"
+              className="title__Title-sc-155hqgb-0 hCerfg"
             >
               Last Article
             </h1>
           </div>
         </section>
       </div>
+      <div
+        className="layout__Side-sc-ccgz52-3 fzUecF"
+      />
     </main>
   </div>
   <footer>
     <div
-      className="footer__FooterContainer-ffqoa0-0 xTinp"
+      className="footer__FooterContainer-sc-ffqoa0-0 hIZdcv"
     >
       <div
-        className="footer__FooterItem-ffqoa0-1 dFtdBc"
+        className="footer__FooterItem-sc-ffqoa0-1 hsjVJe"
       >
         <a
           href="https://www.linkedin.com/in/wojciech-cendrzak-02188236/"
@@ -96,7 +104,6 @@ exports[`HomePage should match the snapshot 1`] = `
               <img
                 alt=""
                 aria-hidden={true}
-                role="presentation"
                 src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
                 style={
                   Object {
@@ -112,6 +119,7 @@ exports[`HomePage should match the snapshot 1`] = `
             <img
               alt="LinkedIn"
               color="#FFF"
+              data-nimg="intrinsic"
               decoding="async"
               src="/_next/image?url=%2Ficons%2Fin.svg&w=96&q=75"
               srcSet="/_next/image?url=%2Ficons%2Fin.svg&w=48&q=75 1x, /_next/image?url=%2Ficons%2Fin.svg&w=96&q=75 2x"
@@ -138,11 +146,44 @@ exports[`HomePage should match the snapshot 1`] = `
                 }
               }
             />
+            <noscript>
+              <img
+                alt="LinkedIn"
+                color="#FFF"
+                data-nimg="intrinsic"
+                decoding="async"
+                loading="lazy"
+                src="/_next/image?url=%2Ficons%2Fin.svg&w=96&q=75"
+                srcSet="/_next/image?url=%2Ficons%2Fin.svg&w=48&q=75 1x, /_next/image?url=%2Ficons%2Fin.svg&w=96&q=75 2x"
+                style={
+                  Object {
+                    "border": "none",
+                    "bottom": 0,
+                    "boxSizing": "border-box",
+                    "display": "block",
+                    "height": 0,
+                    "left": 0,
+                    "margin": "auto",
+                    "maxHeight": "100%",
+                    "maxWidth": "100%",
+                    "minHeight": "100%",
+                    "minWidth": "100%",
+                    "objectFit": undefined,
+                    "objectPosition": undefined,
+                    "padding": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "width": 0,
+                  }
+                }
+              />
+            </noscript>
           </div>
         </a>
       </div>
       <div
-        className="footer__FooterItem-ffqoa0-1 dFtdBc"
+        className="footer__FooterItem-sc-ffqoa0-1 hsjVJe"
       >
         <a
           href="https://github.com/WojciechCendrzak"
@@ -171,7 +212,6 @@ exports[`HomePage should match the snapshot 1`] = `
               <img
                 alt=""
                 aria-hidden={true}
-                role="presentation"
                 src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIi8+"
                 style={
                   Object {
@@ -187,6 +227,7 @@ exports[`HomePage should match the snapshot 1`] = `
             <img
               alt="Github"
               color="#FFF"
+              data-nimg="intrinsic"
               decoding="async"
               src="/_next/image?url=%2Ficons%2Fgit.svg&w=96&q=75"
               srcSet="/_next/image?url=%2Ficons%2Fgit.svg&w=48&q=75 1x, /_next/image?url=%2Ficons%2Fgit.svg&w=96&q=75 2x"
@@ -213,6 +254,39 @@ exports[`HomePage should match the snapshot 1`] = `
                 }
               }
             />
+            <noscript>
+              <img
+                alt="Github"
+                color="#FFF"
+                data-nimg="intrinsic"
+                decoding="async"
+                loading="lazy"
+                src="/_next/image?url=%2Ficons%2Fgit.svg&w=96&q=75"
+                srcSet="/_next/image?url=%2Ficons%2Fgit.svg&w=48&q=75 1x, /_next/image?url=%2Ficons%2Fgit.svg&w=96&q=75 2x"
+                style={
+                  Object {
+                    "border": "none",
+                    "bottom": 0,
+                    "boxSizing": "border-box",
+                    "display": "block",
+                    "height": 0,
+                    "left": 0,
+                    "margin": "auto",
+                    "maxHeight": "100%",
+                    "maxWidth": "100%",
+                    "minHeight": "100%",
+                    "minWidth": "100%",
+                    "objectFit": undefined,
+                    "objectPosition": undefined,
+                    "padding": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "width": 0,
+                  }
+                }
+              />
+            </noscript>
           </div>
         </a>
       </div>

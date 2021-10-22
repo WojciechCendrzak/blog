@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Prism as SyntaxHighlighter, SyntaxHighlighterProps } from 'react-syntax-highlighter';
-import { Components } from 'react-markdown/src/ast-to-react';
+import type { Components } from 'react-markdown';
 import styled from 'styled-components';
 import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
