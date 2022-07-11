@@ -127,7 +127,7 @@ describe(add.name, () =>
 
 which all passes successfully now
 
-```zsh
+```bash
  PASS  src/add/stage3/add.test.ts
   add
     ✓ 2 + 2 -> 4 (3 ms)
@@ -229,7 +229,7 @@ TDD encourages us to add more tests so let's check it out:
 
 ### Stage 4. one more test
 
-```ts stage4
+```ts
 describe(getPercent.name, () =>
   test.each`
     done | total | expected
@@ -244,7 +244,7 @@ describe(getPercent.name, () =>
 
 Test are failing now, so with different result.
 
-```zsh
+```bash
  FAIL  src/get-percent1/stage4/get-percent.test.ts
   getPercent
     ✓ 5 done of total 10 should give 50 % (3 ms)
