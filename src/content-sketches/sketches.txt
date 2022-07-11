@@ -1,0 +1,9 @@
+Here are more benefits we gain:
+- build trust on code base
+- discover interestnig edgecase that will help to define better user experience
+- helps to keep better app structure: encourages to keep function small, pure, simply, readable, detatched from complex app structure
+- provide to having tests that are fast and not fragile
+- we discovered that trivial functions are not as trivial as they first seem
+
+See some more sophisticated examples here
+Want's more look at the example of file size Formating here.

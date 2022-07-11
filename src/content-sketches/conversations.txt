@@ -1,0 +1,53 @@
+Q:
+But do we really need to test simple conditions?
+What is the benefit of testing A & B & C? If you always know that it's true only when all of them are true?
+
+A:
+I think so because writing a test brings more benefits than just testing. When you use TDD approach, you creates better code automatically.
+
+it isolates high business logic from implementation details.
+that isolation / modularity will build proper dependencies which allows you to change business logic easily in future
+it documents business logic which could be simple but it is important to understand what product is doing at the high level (it reflects communication between developers and product manages)
+I think we shouldn't underestimate simple tests. If you take a look at testing pyramid (e2e, service, unit) you will notice that most of them should be unit. Why? because they are quick, do the job, are simple to write, to change and to understand. And boring :) which is good code smell as you don't need to "decode" complex logic but rather read it as a prose.
+
+---
+
+Q:
+I agree, Yes, it can be encapsulated as implementation detail. But in this case it should not be allowed to broad use. Some other guy may have come and try to use this hook because it called useOrientationModules and it's available in package/hooks folder. Is it really fully reusable, though? Maybe give it more descriptive name, so it can't be misinterpreted.
+
+I disagree, that hooks are flexible and composable enough to make every other function as hook. Just because hooks can't be put into a condition. This leads to optional arguments, return on the first line and etc. Which makes DX and code clarity drastically worth.
+
+Like, why if my code module that requires sectionName to be executed properly can accept undefined? Is it correct from algorithmic stand point? Probably not, because function should not be called at all in this case. This is tradeoff that you had to use to wrap it into a hook.
+
+What I want to say is that hooks are not panacea, and they should be used when they are really needed. You can do everything with simple functions (including encapsulation) as with hooks, but without tradeoffs. Only thing you can't do, is call a hook 😄 So I would prefer to compose functions inside a hook, than compose hooks, just because there is no way to compose them outside the hook or component.
+
+My stand point is that all code that is offered for end developer as API should be truly reusable, because it's a pain when u start working on a ticket and spend 90% time tweaking code that was offered you to use. If it's only for particular case, it should be hidden from public api.
+
+Feel free to argue :)
+
+A:
+useOrientationModules is not exposed, it is internal, take look at /hooks/index.ts
+Dealing with null / undefined value is no more nightmare since TypeScript solved this 'The Billion Dollar Mistake' by guarding them semantically which doesn't exists in any other language
+actually hooks has increased compositionality significantly since ever in React. Just plug and play.
+
+Q:
+useOrientationModules is not exposed, it is internal, take look at /hooks/index.ts
+
+For me, most reliable way to encapsulate something from being exposed is to put it inside a folder of module within it is used. That way it visually obvious that it's implementation detail of a module. If it placed on the same level it means it is reusable somewhere else (hence open for usage).
+
+Dealing with null / undefined value is no more nightmare
+
+Typescript is not solving algorithmic issue. If required params for a function to execute properly not exist, function should not be called at first place.
+
+actually hooks has increased compositionality significantly since ever in React. Just plug and play.
+
+I didn't argued that. I said that hooks have limitations and they are not panacea. If something can be done with simple function, it should be done with simple function, because it don't have limitation that hooks have.
+
+A:
+At the end of the day most reliable is index file (do export or not), and we shouldn't forget about KISS (having additional folders for just one file is unnecessary)
+
+Typescript do solve algorithmic issue by guarding optional chaining which you can use as a syntactic sugar instead of explicite logic. It basically do the same thing: stop the rest of algorithm execution when null is encountered. It's so handy, readable, condense, you can easily follow the logic being not spread through different places just for null checking. Its promote functional programming way of thinking that helps trust your code more.
+
+I think the discussion has became out of sync for this PR because useOrientationModules.ts is removed as api was simplified.
+
+
