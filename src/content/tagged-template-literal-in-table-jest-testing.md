@@ -47,7 +47,7 @@ Let's warm up first with a very trivial example in the TDD way, which stands for
 Let's add some numbers.
 Who don't like to add numbers?
 
-All source code you can find here. (TODO:)
+All source code you can find [here](https://github.com/WojciechCendrzak/tagged-emplate-iteral-jest-tests).
 
 ### Stage 1. create a test first
 
