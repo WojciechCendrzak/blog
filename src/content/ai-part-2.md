@@ -97,6 +97,26 @@ for epoch in range(10):
 
 _This PyTorch app trains a deep learning model using the CIFAR-10 dataset, which consists of 60,000 32x32 color training images and 10,000 test images, labeled with one of 10 classes. The model is defined using the torchvision.models.resnet18() function, which creates a pre-trained ResNet-18 model. The model is trained using the Adam optimizer and the cross-entropy loss function. After training for 10 epochs, the model is evaluated on the test set and the accuracy is reported._
 
+What fun is this code works. However it takes 1h 38m 21s to finished.
+here is an output
+
+```sh
+Downloading https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz to data/cifar-10-python.tar.gz
+100%
+170498071/170498071 [00:04<00:00, 40193084.50it/s]
+Extracting data/cifar-10-python.tar.gz to data/
+Epoch: 1, Test Accuracy: 53.150001525878906
+Epoch: 2, Test Accuracy: 57.779998779296875
+Epoch: 3, Test Accuracy: 60.90999984741211
+Epoch: 4, Test Accuracy: 62.2400016784668
+Epoch: 5, Test Accuracy: 63.369998931884766
+Epoch: 6, Test Accuracy: 62.959999084472656
+Epoch: 7, Test Accuracy: 63.15999984741211
+Epoch: 8, Test Accuracy: 64.19999694824219
+Epoch: 9, Test Accuracy: 63.310001373291016
+Epoch: 10, Test Accuracy: 63.65999984741211
+```
+
 ### please visualize loss
 _To visualize the loss, you can add some code to your PyTorch app to plot the loss at each epoch using a library like Matplotlib. For example, you could modify your app to include the following code:_
 
