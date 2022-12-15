@@ -1,5 +1,5 @@
 ---
-title: 'What is AI and Deep Learning - History and Future'
+title: 'AI and Deep Learning - Part 1. History and Future'
 date: '2022-12-09'
 author: 'Wojciech Cendrzak'
 image: '/images/tagged-template-literal-jest-test.png'

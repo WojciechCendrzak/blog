@@ -1,5 +1,5 @@
 ---
-title: 'AI - Predict next time slots based on historical timeslots'
+title: 'AI and Deep Learning - Part 3.  - Predict next time slots based on historical timeslots'
 date: '2022-12-09'
 author: 'Wojciech Cendrzak'
 image: '/images/tagged-template-literal-jest-test.png'

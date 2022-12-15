@@ -1,5 +1,5 @@
 ---
-title: 'AI - How to start learn in 2023 - An interview with GTP-3 chatbot'
+title: 'AI and Deep Learning - Part 2. - How to start learn in 2023 - An interview with GTP-3 chatbot'
 date: '2022-12-09'
 author: 'Wojciech Cendrzak'
 image: '/images/tagged-template-literal-jest-test.png'
