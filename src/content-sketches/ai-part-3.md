@@ -4,7 +4,7 @@ date: '2022-12-09'
 author: 'Wojciech Cendrzak'
 image: '/images/tagged-template-literal-jest-test.png'
 tags: 'AI, pytorch'
-isPublished: true
+isPublished: false
 ---
 
 ## Intorduction
