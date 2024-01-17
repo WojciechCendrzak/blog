@@ -9,7 +9,3 @@ isPublished: false
 ---
 
 That's remind me a one anecdote some friend of mine told me couples years ago about differences between first and last year of students of architecture, especially girls.
-
-test for ci
-TEST 2
-test 3
