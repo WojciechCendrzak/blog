@@ -24,7 +24,7 @@ export const PostCard: React.FC<PostCardProps> = ({ post }) => {
         </Link>
       </LinkContainer>
       <PostImageContainer>
-        {post.image && <PostImage priority src={post.image} width={226} height={120} alt={post.title} />}
+        {post.image && <PostImage priority src={post.image} width={226} height={120} alt={post.title || ''} />}
       </PostImageContainer>
     </CardContainer>
   );

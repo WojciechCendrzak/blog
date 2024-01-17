@@ -23,7 +23,7 @@ export const en = {
     },
     posts: {
       title: 'Articles',
-      readintTime: '{{readingTime}} min',
+      min: 'min',
     },
     aboutMe: {
       title: 'About me',

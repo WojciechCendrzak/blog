@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { PropsWithChildren, useCallback, useEffect, useState } from 'react';
 import { Prism as SyntaxHighlighter, SyntaxHighlighterProps } from 'react-syntax-highlighter';
 import type { Components } from 'react-markdown';
 import styled from 'styled-components';
@@ -12,7 +12,7 @@ import { colors } from '../../const/colors';
 interface HeaderProps {
   level: number;
 }
-const Header: React.FC<HeaderProps> = ({ level, children }) => {
+const Header = ({ level, children }: PropsWithChildren<HeaderProps>) => {
   const dispatch = useDispatch();
   const ref = useRef<HTMLDivElement>(null);
   const [isReached, setIsReached] = useState(false);
@@ -23,7 +23,7 @@ const Header: React.FC<HeaderProps> = ({ level, children }) => {
     setIsReached(isReached);
   }, []);
 
-  const title = ((children || ['']) as string[])[0];
+  const title = `${children}`;
 
   useEffect(() => {
     const outlineItem: OutlineItem = {
@@ -52,15 +52,15 @@ const Header: React.FC<HeaderProps> = ({ level, children }) => {
   }
 };
 
-const H2: React.FC<HeaderProps> = ({ children }) => <Header level={2}>{children}</Header>;
-const H3: React.FC<HeaderProps> = ({ children }) => <Header level={3}>{children}</Header>;
-const H4: React.FC<HeaderProps> = ({ children }) => <Header level={4}>{children}</Header>;
+const H2 = ({ children }: PropsWithChildren) => <Header level={2}>{children}</Header>;
+const H3 = ({ children }: PropsWithChildren) => <Header level={3}>{children}</Header>;
+const H4 = ({ children }: PropsWithChildren) => <Header level={4}>{children}</Header>;
 
 export const markDownComponents: Components = {
-  code({ inline, className, children, ...props }) {
+  code({ className, children, ...props }) {
     const match = /language-(\w+)/.exec(className || '');
-    return !inline && match ? (
-      <Code language={match[1]} PreTag="div" {...props}>
+    return match ? (
+      <Code language={match[1]} PreTag="div">
         {String(children).replace(/\n$/, '')}
       </Code>
     ) : (
@@ -72,6 +72,7 @@ export const markDownComponents: Components = {
   h4: H4,
 };
 
+// @ts-expect-error After lib upgrade, the type is not correct
 const Code = styled(SyntaxHighlighter)<SyntaxHighlighterProps>`
   background: ${colors.codeBackground} !important;
   border-radius: 8px;

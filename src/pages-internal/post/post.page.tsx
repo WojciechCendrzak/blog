@@ -29,10 +29,10 @@ export const PostPage: React.FC<PostPageProps> = ({ post }) => {
               <Date date={post.date} />
             </div>
           )}
-          <div>{translate(translationKeys.pages.posts.readintTime, { readingTime: post.readingTimeInMinutes })}</div>
+          <div>{`${post.readingTimeInMinutes} ${translate(translationKeys.pages.posts.min)}`}</div>
           {post.image && (
             <PostImageContainer>
-              <PostImage priority src={post.image} height={400} width={680} alt={post.title} />
+              <PostImage priority src={post.image} height={400} width={680} alt={post.title || ''} />
             </PostImageContainer>
           )}
         </PostHeader>

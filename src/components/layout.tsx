@@ -3,14 +3,14 @@ import { translate, translationKeys } from '../logic/translations/translation.se
 import styled from 'styled-components';
 import { Menu } from './menu/menu';
 import { Footer } from './footer/footer';
-import { ReactNode } from 'react';
+import { PropsWithChildren, ReactNode } from 'react';
 import { MIDDLE_COLUMN_SIZE, POST_MARGIN_BOTTOM } from '../const/sizes';
 
 interface LayoutProps {
   leftSection?: ReactNode;
   rightSection?: ReactNode;
 }
-export const Layout: React.FC<LayoutProps> = ({ children, leftSection, rightSection }) => {
+export const Layout = ({ children, leftSection, rightSection }: PropsWithChildren<LayoutProps>) => {
   return (
     <LayoutContainer>
       <div>
